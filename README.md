@@ -1,10 +1,10 @@
+Certainly! I'll provide step-by-step instructions on how to create a demo project for learning about basic component creation in React Native, including components with props and state. Here's an updated version of the assignment focused on React Native:
+
 # Renton Technical College CSI-248
-
 <br />
-
 <div align="center">  
     <img src="logo.jpg" alt="Logo">
-    <h3 align="center">Guided Activity 2</h3>
+    <h3 align="center">Guided Activity 2: React Native Basics</h3>
 </div>
 
 This repository is a part of CSI-248 at Renton Technical College.
@@ -17,78 +17,257 @@ This repository is a part of CSI-248 at Renton Technical College.
 4. Type `code .` to open the repository in Visual Studio Code.
 5. Hit ctrl + ` to open the terminal.
 6. Type `mkdir Screenshots` to add a screenshots folder to the project.
-   ![Alt text](<Images/GA2 - Setup - Step 6.png>)
 
-## Guided Activity Part 2 Intro To React - Components
+## Guided Activity Part 2: Intro to React Native - Components
 
-1. We are going to build a basic UI to display a blog post out out components.
-2. In the terminal type `npm create vite .` to create a vite project in the current directory.
-3. Name the project guidedactivity2.
-4. Choose React as the Framework.
-5. Choose JavaScript as the variant.
-   ![Alt text](<Images/GA2 - Components - Step 5.png>)
+1. We are going to build a basic UI to display a blog post using React Native components.
+2. In the terminal, type `npx create-expo-app BlogApp` to create a new Expo project.
+3. Once the project is created, navigate into it by typing `cd BlogApp`.
+4. Open the project in Visual Studio Code by typing `code .`.
+5. In the terminal, type `npx expo start` to launch the development server.
+6. You can run the app on your physical device using the Expo Go app, or set up an emulator/simulator.
 
-6. When the project has generated type `cd guidedactivity2`.
-7. Type `npm install`.
-8. Type `npm run dev` to launch the demo project.
-   ![Alt text](<Images/GA2 - Components - Step 8.png>)
+7. Open `App.js` and replace ALL of the code with the following:
 
-9. Click the local host link to launch the project.
-   ![Alt text](<Images/GA2 - Components - Step 9.png>)
+```javascript
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-10. Take a screenshot of the template project running and save in screenshots.
-    ![Alt text](<Images/GA2 - Components - Step 10 cropped.png>)
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome to My Blog</Text>
+    </View>
+  );
+}
 
-11. In the src folder replace ALL of the code in App.jsx with the following:
-    ![Alt text](<Images/GA2 - Components - Step 11.png>)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  title: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+});
+```
 
-12. Save App.jsx and notice the change in the browser. Add a screenshot of this output.
-    ![Alt text](<Images/GA2 - Components - Step 12 cropped.png>)
+8. Save `App.js` and notice the change in the app. Add a screenshot of this output to your Screenshots folder.
 
-13. Inside of src create a folder named components.
-14. Create a component named BlogHeader.jsx
-    ![Alt text](<Images/GA2 - Components - Step 14.png>)
+9. Inside the project folder, create a new folder named `components`.
 
-15. In BlogHeader.jsx add the following code:
+10. In the `components` folder, create a new file named `BlogHeader.js`.
 
-    ![Alt text](<Images/GA2 - Components - Step 15.png>)
+11. In `BlogHeader.js`, add the following code:
 
-16. Go back to App.jsx and import the new component and render the component after the h1:
-    ![Alt text](<Images/GA2 - Components - Step 16.png>)
+```javascript
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-17. Now that we see our component is working lets try to pass some data to it with props
-18. Modify BlogHeader.jsx to take a props parameter and display information from the props in the component:
-    ![Alt text](<Images/GA2 - Components - Step 18.png>)
+const BlogHeader = () => {
+  return (
+    <View style={styles.header}>
+      <Text style={styles.headerText}>My Blog Header</Text>
+    </View>
+  );
+};
 
-19. Modify App.jsx to pass data to the BlogHeader component:
-    ![Alt text](<Images/GA2 - Components - Step 19.png>)
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: '#4CAF50',
+    padding: 20,
+    width: '100%',
+  },
+  headerText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});
 
-20. Data is now being moved from a parent component to a child component. Take a Screenshot of the output and add to screenshots.
-    ![Alt text](<Images/GA2 - Components - Step 20 cropped.png>)
+export default BlogHeader;
+```
 
-21. Repeat this process for a BlogBody component and a BlogFooter component.
-22. Code for BlogBody:
+12. Go back to `App.js` and import the new component. Modify `App.js` to use the `BlogHeader` component:
 
-    ![Alt text](<Images/GA2 - Components - Step 22.png>)
+```javascript
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import BlogHeader from './components/BlogHeader';
 
-23. Code for BlogFooter:
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <BlogHeader />
+    </View>
+  );
+}
 
-    ![Alt text](<Images/GA2 - Components - Step 23.png>)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F5FCFF',
+  },
+});
+```
 
-24. Import BlogBody and BlogFooter into App.jsx and render them while passing some data to the props
-25. Updated code for App.jsx. Notice how components can also use self-closing tags.
+13. Now let's modify `BlogHeader.js` to accept props:
 
-    ![Alt text](<Images/GA2 - Components - Step 25.png>)
+```javascript
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-26. Take a screenshot of the rendered webpage and save in screenshots directory.
-    ![Alt text](<Images/GA2 - Components - Step 26 cropped.png>)
+const BlogHeader = ({ title, author }) => {
+  return (
+    <View style={styles.header}>
+      <Text style={styles.headerText}>{title}</Text>
+      <Text style={styles.authorText}>By {author}</Text>
+    </View>
+  );
+};
 
-## Guided Activity Part 3 Submission (You can also use GitHub desktop to submit)
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: '#4CAF50',
+    padding: 20,
+    width: '100%',
+  },
+  headerText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  authorText: {
+    color: 'white',
+    fontSize: 14,
+  },
+});
+
+export default BlogHeader;
+```
+
+14. Modify `App.js` to pass data to the `BlogHeader` component:
+
+```javascript
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import BlogHeader from './components/BlogHeader';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <BlogHeader title="My First Blog Post" author="John Doe" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F5FCFF',
+  },
+});
+```
+
+15. Data is now being moved from a parent component to a child component. Take a screenshot of the output and add to the Screenshots folder.
+
+16. Now, let's create a component with state. Create a new file in the `components` folder named `LikeCounter.js`:
+
+```javascript
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+
+const LikeCounter = ({ initialLikes }) => {
+  const [likes, setLikes] = useState(initialLikes);
+
+  const handleLike = () => {
+    setLikes(likes + 1);
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.likesText}>Likes: {likes}</Text>
+      <TouchableOpacity style={styles.button} onPress={handleLike}>
+        <Text style={styles.buttonText}>Like</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
+  likesText: {
+    fontSize: 16,
+    marginRight: 10,
+  },
+  button: {
+    backgroundColor: '#4CAF50',
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+});
+
+export default LikeCounter;
+```
+
+17. Now, update `App.js` to include the `LikeCounter` component:
+
+```javascript
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import BlogHeader from './components/BlogHeader';
+import LikeCounter from './components/LikeCounter';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <BlogHeader title="My First Blog Post" author="John Doe" />
+      <LikeCounter initialLikes={0} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F5FCFF',
+  },
+});
+```
+
+18. Take a final screenshot of the rendered app and save it in the Screenshots directory.
+
+## Explanation of Components
+
+1. `App.js`: This is the main component of our application. It serves as a container for other components and manages the overall structure of the app.
+
+2. `BlogHeader.js`: This component demonstrates the use of props. It receives `title` and `author` as props from its parent (`App.js`) and displays them. This shows how data can be passed down from parent to child components.
+
+3. `LikeCounter.js`: This component demonstrates the use of both props and state. It receives an `initialLikes` prop and uses the `useState` hook to manage its own state. The `handleLike` function updates the state when the button is pressed, causing the component to re-render with the new like count.
+
+React Native uses a similar component-based architecture to React, but with native mobile components instead of web components. The `View` component is similar to a `div` in web development, while `Text` is used for displaying text. `TouchableOpacity` is a commonly used component for creating touchable elements like buttons.
+
+The `StyleSheet.create` method is used to define styles for our components. This is similar to CSS in web development but uses JavaScript objects to define styles.
+
+By building this simple blog post app, you've learned about creating basic components, passing props, and managing state in a React Native application.
+
+## Guided Activity Part 3 Submission
 
 1. Type `git add .` to stage all updated files.
 2. Type `git commit -m "Guided Activity 2 Complete"`.
 3. Type `git push`.
 
 If you have any questions about this assignment please reach out to myself or our TA for this course.
-
 Feel free to message your instructor or the TA on Canvas if you have any questions.
