@@ -19,13 +19,14 @@ This repository is a part of CSI-248 at Renton Technical College.
 ## Guided Activity Part 2: Intro to React Native - Components
 
 1. We are going to build a basic UI to display a blog post using React Native components.
-2. In the terminal, type `npx create-expo-app BlogApp` to create a new Expo project.
+2. In the terminal, type `npx create-expo-app BlogApp --template blank` to create a new Expo project.
 3. Once the project is created, navigate into it by typing `cd BlogApp`.
 4. Open the project in Visual Studio Code by typing `code .`.
-5. In the terminal, type `npx expo start` to launch the development server.
-6. You can run the app on your physical device using the Expo Go app, or set up an emulator/simulator.
+5. If you would like to be able to launch this application via web browser run `npx expo install react-dom react-native-web @expo/metro-runtime`
+6. In the terminal, type `npx expo start` to launch the development server.
+7. You can run the app on your physical device using the Expo Go app or in the browser by presseing `w`.
 
-7. Open `App.js` and replace ALL of the code with the following:
+8. Open `App.js` and replace ALL of the code with the following:
 
 ```javascript
 import React from 'react';
