@@ -31,20 +31,27 @@ This repository is a part of CSI-248 at Renton Technical College.
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+// This is the main component of our application
+// It acts as a container for other components
 export default function App() {
   return (
+    // View is the fundamental UI building block in React Native
+    // It's similar to a <div> in web development
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to My Blog</Text>
     </View>
   );
 }
 
+// StyleSheet.create is used to define styles
+// It's similar to CSS, but uses JavaScript objects
+// This approach can provide better performance than inline styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1, // This makes the container expand to fill the screen
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF', // Light background color
   },
   title: {
     fontSize: 20,
@@ -66,24 +73,34 @@ const styles = StyleSheet.create({
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const BlogHeader = () => {
+// BlogHeader is a functional component that accepts props
+// It demonstrates how to use props in a React Native component
+const BlogHeader = ({ title, author }) => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerText}>My Blog Header</Text>
+      {/* We use the title prop here */}
+      <Text style={styles.headerText}>{title}</Text>
+      {/* And the author prop here */}
+      <Text style={styles.authorText}>By {author}</Text>
     </View>
   );
 };
 
+// Styles for the BlogHeader component
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#4CAF50', // Green background
     padding: 20,
-    width: '100%',
+    width: '100%', // Full width of the parent
   },
   headerText: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  authorText: {
+    color: 'white',
+    fontSize: 14,
   },
 });
 
@@ -97,18 +114,28 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import BlogHeader from './components/BlogHeader';
 
+// This is the main component of our application
+// It acts as a container for other components
 export default function App() {
   return (
+    // View is the fundamental UI building block in React Native
+    // It's similar to a <div> in web development
     <View style={styles.container}>
-      <BlogHeader />
+      {/* BlogHeader component with props */}
+      {/* We're passing 'title' and 'author' as props to BlogHeader */}
+      {/* This demonstrates how data flows from parent to child components */}
+      <BlogHeader title="My First Blog Post" author="John Doe" />
     </View>
   );
 }
 
+// StyleSheet.create is used to define styles
+// It's similar to CSS, but uses JavaScript objects
+// This approach can provide better performance than inline styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
+    flex: 1, // This makes the container expand to fill the screen
+    backgroundColor: '#F5FCFF', // Light background color
   },
 });
 ```
