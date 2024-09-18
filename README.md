@@ -177,20 +177,43 @@ const styles = StyleSheet.create({
 
 16. Now, let's create a component with state. Create a new file in the `components` folder named `LikeCounter.js`:
 
+
 ```javascript
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
+// The LikeCounter component takes an 'initialLikes' prop
+// This demonstrates how data can be passed from a parent component
 const LikeCounter = ({ initialLikes }) => {
+  // useState is a React Hook that lets you add state to functional components
+  // It returns an array with two elements:
+  // 1. The current state value (likes)
+  // 2. A function to update that state (setLikes)
+  // The argument passed to useState is the initial state value
+  // Here, we're using the 'initialLikes' prop as the initial state
   const [likes, setLikes] = useState(initialLikes);
 
+  // This function is called when the "Like" button is pressed
+  // It uses the setLikes function to update the state
   const handleLike = () => {
-    setLikes(likes + 1);
+    // When updating state based on the previous state,
+    // it's best to use the functional form of setState
+    // This ensures we're always working with the most up-to-date state
+    setLikes(prevLikes => prevLikes + 1);
+    
+    // Alternatively, you could write:
+    // setLikes(likes + 1);
+    // But this might lead to issues if state updates happen very quickly
   };
 
+  // The component's UI
   return (
     <View style={styles.container}>
+      {/* Display the current number of likes */}
       <Text style={styles.likesText}>Likes: {likes}</Text>
+      
+      {/* TouchableOpacity is used to create a touchable button */}
+      {/* When pressed, it calls the handleLike function */}
       <TouchableOpacity style={styles.button} onPress={handleLike}>
         <Text style={styles.buttonText}>Like</Text>
       </TouchableOpacity>
@@ -198,6 +221,7 @@ const LikeCounter = ({ initialLikes }) => {
   );
 };
 
+// Styles for the component
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -222,7 +246,7 @@ const styles = StyleSheet.create({
 export default LikeCounter;
 ```
 
-17. Now, update `App.js` to include the `LikeCounter` component:
+Now, let's update the `App.js` file to show how props are passed to the `LikeCounter` component:
 
 ```javascript
 import React from 'react';
@@ -233,7 +257,11 @@ import LikeCounter from './components/LikeCounter';
 export default function App() {
   return (
     <View style={styles.container}>
+      {/* The BlogHeader component receives 'title' and 'author' as props */}
       <BlogHeader title="My First Blog Post" author="John Doe" />
+      
+      {/* The LikeCounter component receives 'initialLikes' as a prop */}
+      {/* This demonstrates how we can pass data from a parent component to a child component */}
       <LikeCounter initialLikes={0} />
     </View>
   );
@@ -246,6 +274,17 @@ const styles = StyleSheet.create({
   },
 });
 ```
+
+
+Key points to understand:
+
+1. Props: Props (short for "properties") are a way to pass data from parent components to child components. In this example, `App.js` passes the `initialLikes` prop to the `LikeCounter` component.
+
+2. useState: This is a React Hook that allows functional components to have state. It takes an initial state value as an argument and returns an array with two elements: the current state value and a function to update it. When the state updating function is called, React re-renders the component with the new state.
+
+3. State updates: When updating state based on its previous value, it's best to use the functional form of the state updating function (e.g., `setLikes(prevLikes => prevLikes + 1)`). This ensures that you're always working with the most up-to-date state value, which is important in cases where multiple state updates might happen in quick succession.
+
+These concepts form the foundation of building interactive components in React Native. By understanding props and state, you can create components that can receive data from their parents and manage their own internal state, allowing for dynamic and interactive user interfaces.
 
 18. Take a final screenshot of the rendered app and save it in the Screenshots directory.
 
