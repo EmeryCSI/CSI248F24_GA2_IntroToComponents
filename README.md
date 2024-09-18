@@ -1,5 +1,3 @@
-Certainly! I'll provide step-by-step instructions on how to create a demo project for learning about basic component creation in React Native, including components with props and state. Here's an updated version of the assignment focused on React Native:
-
 # Renton Technical College CSI-248
 <br />
 <div align="center">  
