@@ -412,45 +412,12 @@ Key points to understand:
    - The `colorOptions` container uses `flexWrap: 'wrap'` to allow the color options to flow onto multiple lines if there are many colors.
 
 This component demonstrates several important React Native concepts: state management with hooks, dynamic rendering with `map`, handling user interactions with `TouchableOpacity`, and applying dynamic styles based on state and props.
-```
 
-Key points to understand about the ColorPicker component:
-
-1. State Management: The component uses the `useState` hook to manage its current color state. This allows the component to update its appearance based on user interactions.
-
-2. Props: The component accepts an `initialColor` prop, demonstrating how we can pass initial values to components.
-
-3. Event Handling: The `handleColorChange` function is called when a color is selected, updating the component's state.
-
-4. Dynamic Rendering: We use the `map` function to dynamically render color options based on an array of colors.
-
-5. Style Composition: The component demonstrates how to compose styles dynamically, such as applying the selected color to the preview circle.
-
-This ColorPicker component showcases more advanced React Native concepts while fitting into the theme of our blog post app. It could be used, for example, to allow users to customize the appearance of their blog posts.
-
-20. Take a final screenshot of the rendered app with the new ColorPicker component and save it in the Screenshots directory.
-
-## Explanation of Components
-
-1. `App.js`: This is the main component of our application. It serves as a container for other components and manages the overall structure of the app.
-
-2. `BlogHeader.js`: This component demonstrates the use of props. It receives `title` and `author` as props from its parent (`App.js`) and displays them. This shows how data can be passed down from parent to child components.
-
-3. `LikeCounter.js`: This component demonstrates the use of both props and state. It receives an `initialLikes` prop and uses the `useState` hook to manage its own state. The `handleLike` function updates the state when the button is pressed, causing the component to re-render with the new like count.
-
-4. `ColorPicker.js`: This component demonstrates more complex state management and user interaction. It allows users to select a color from predefined options, updating its state and visual appearance accordingly. This component shows how to handle user interactions, manage more complex state, and dynamically generate UI elements based on data (the color options array).
-
-React Native uses a similar component-based architecture to React, but with native mobile components instead of web components. The `View` component is similar to a `div` in web development, while `Text` is used for displaying text. `TouchableOpacity` is a commonly used component for creating touchable elements like buttons.
-
-The `StyleSheet.create` method is used to define styles for our components. This is similar to CSS in web development but uses JavaScript objects to define styles.
-
-By building this simple blog post app with a color picker, you've learned about creating basic components, passing props, managing state, and handling user interactions in a React Native application.
-
-## Guided Activity Part 3 Submission
+## Guided Activity Part  Submission
 
 1. Ensure all your changes, including the new ColorPicker component, are saved.
 2. Type `git add .` to stage all updated files.
-3. Type `git commit -m "Guided Activity 2 Complete with ColorPicker"`.
+3. Type `git commit -m "Guided Activity 2 Complete"`.
 4. Type `git push`.
 
 If you have any questions about this assignment, including the new ColorPicker component, please reach out to myself or our TA for this course.
