@@ -90,9 +90,10 @@ const BlogHeader = ({ title, author }) => {
 // Styles for the BlogHeader component
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#4CAF50', // Green background
+    backgroundColor: "#4CAF50", // Green background
     padding: 20,
-    width: '100%', // Full width of the parent
+    width: "100%", // Full width of the parent
+    paddingTop: 40, // Expand header below toolbar
   },
   headerText: {
     color: 'white',
