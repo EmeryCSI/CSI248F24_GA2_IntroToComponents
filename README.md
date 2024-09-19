@@ -322,6 +322,11 @@ const styles = StyleSheet.create({
 
 export default ColorPicker;
 ```
+
+19. Import the ColorPicker into App.js and Render the Component.
+
+20. Take a screenshot of the output and add it to the screenshots folder.
+
 Key points to understand:
 
 1. **useState Hook**: 
@@ -356,7 +361,7 @@ This component demonstrates several important React Native concepts: state manag
 
 ## Guided Activity Part  Submission
 
-1. Ensure all your changes, including the new ColorPicker component, are saved.
+1. Ensure all your changes, including all screenshots are saved.
 2. Type `git add .` to stage all updated files.
 3. Type `git commit -m "Guided Activity 2 Complete"`.
 4. Type `git push`
