@@ -142,67 +142,9 @@ const styles = StyleSheet.create({
 });
 ```
 
-13. Now let's modify `BlogHeader.js` to accept props:
+14. Data is now being moved from a parent component to a child component. Take a screenshot of the output and add to the Screenshots folder.
 
-```javascript
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-const BlogHeader = ({ title, author }) => {
-  return (
-    <View style={styles.header}>
-      <Text style={styles.headerText}>{title}</Text>
-      <Text style={styles.authorText}>By {author}</Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#4CAF50',
-    padding: 20,
-    width: '100%',
-  },
-  headerText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  authorText: {
-    color: 'white',
-    fontSize: 14,
-  },
-});
-
-export default BlogHeader;
-```
-
-14. Modify `App.js` to pass data to the `BlogHeader` component:
-
-```javascript
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import BlogHeader from './components/BlogHeader';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <BlogHeader title="My First Blog Post" author="John Doe" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  },
-});
-```
-
-15. Data is now being moved from a parent component to a child component. Take a screenshot of the output and add to the Screenshots folder.
-
-16. Now, let's create a component with state. Create a new file in the `components` folder named `LikeCounter.js`:
+15. Now, let's create a component with state. Create a new file in the `components` folder named `LikeCounter.js`:
 
 ```javascript
 import React, { useState } from 'react';
