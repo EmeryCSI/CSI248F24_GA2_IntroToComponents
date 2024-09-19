@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
 
 18. Let's create a color picker component to demonstrate more complex state management. Create a new file in the `components` folder named `ColorPicker.js` and add the following code:
 
-
+```javascript
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
 });
 
 export default ColorPicker;
-
+```
 Key points to understand:
 
 1. **useState Hook**: 
