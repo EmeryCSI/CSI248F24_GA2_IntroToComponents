@@ -1,5 +1,3 @@
-Here's the full tutorial including the color picker component:
-
 # Renton Technical College CSI-248
 
 <div align="center">  
@@ -418,7 +416,7 @@ This component demonstrates several important React Native concepts: state manag
 1. Ensure all your changes, including the new ColorPicker component, are saved.
 2. Type `git add .` to stage all updated files.
 3. Type `git commit -m "Guided Activity 2 Complete"`.
-4. Type `git push`.
+4. Type `git push`
 
 If you have any questions about this assignment, including the new ColorPicker component, please reach out to myself or our TA for this course.
 Feel free to message your instructor or the
