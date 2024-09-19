@@ -306,32 +306,42 @@ const styles = StyleSheet.create({
 
 18. Let's create a color picker component to demonstrate more complex state management. Create a new file in the `components` folder named `ColorPicker.js` and add the following code:
 
-```javascript
+
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const ColorPicker = ({ initialColor }) => {
   // We use useState to manage the current color
+  // initialColor is used as the initial state value
   const [currentColor, setCurrentColor] = useState(initialColor);
 
   // Array of color options
+  // These are hex color codes representing different colors
   const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
 
   // Function to handle color selection
+  // This function is called when a color is tapped
   const handleColorChange = (color) => {
-    setCurrentColor(color);
+    setCurrentColor(color); // Update the currentColor state
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Color Picker</Text>
+      {/* This View displays the currently selected color */}
+      {/* The style prop here combines predefined styles with dynamic backgroundColor */}
+      {/* [styles.colorPreview, { backgroundColor: currentColor }] is an array of style objects */}
+      {/* styles.colorPreview contains base styles defined in StyleSheet.create() */}
+      {/* { backgroundColor: currentColor } is an inline style object that overrides or adds to the base styles */}
+      {/* This allows the preview's background color to update dynamically as currentColor changes */}
       <View style={[styles.colorPreview, { backgroundColor: currentColor }]} />
       <View style={styles.colorOptions}>
+        {/* Map over the colors array to create TouchableOpacity components for each color */}
         {colors.map((color) => (
           <TouchableOpacity
-            key={color}
+            key={color} // Use the color itself as a unique key
             style={[styles.colorOption, { backgroundColor: color }]}
-            onPress={() => handleColorChange(color)}
+            onPress={() => handleColorChange(color)} // Call handleColorChange when pressed
           />
         ))}
       </View>
@@ -339,6 +349,7 @@ const ColorPicker = ({ initialColor }) => {
   );
 };
 
+// Styles for the ColorPicker component
 const styles = StyleSheet.create({
   container: {
     padding: 10,
@@ -352,50 +363,55 @@ const styles = StyleSheet.create({
   colorPreview: {
     width: 100,
     height: 100,
-    borderRadius: 50,
+    borderRadius: 50, // Makes it circular
     marginBottom: 20,
   },
   colorOptions: {
     flexDirection: 'row',
     justifyContent: 'center',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap', // Allows colors to wrap to next line if there are many
   },
   colorOption: {
     width: 40,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 20, // Makes each color option circular
     margin: 5,
   },
 });
 
 export default ColorPicker;
-```
 
-19. Now, let's update `App.js` to include our new `ColorPicker` component:
+Key points to understand:
 
-```javascript
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import BlogHeader from './components/BlogHeader';
-import LikeCounter from './components/LikeCounter';
-import ColorPicker from './components/ColorPicker';
+1. **useState Hook**: 
+   - `const [currentColor, setCurrentColor] = useState(initialColor);`
+   - This line sets up a state variable `currentColor` and a function to update it `setCurrentColor`.
+   - The initial value of `currentColor` is set to `initialColor`, which is passed as a prop.
 
-export default function App() {
-  return (
-    <ScrollView style={styles.container}>
-      <BlogHeader title="My First Blog Post" author="John Doe" />
-      <LikeCounter initialLikes={0} />
-      <ColorPicker initialColor="#4CAF50" />
-    </ScrollView>
-  );
-}
+2. **Color Options**:
+   - `const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];`
+   - This array defines the color options available in the picker.
+   - Each color is represented by its hexadecimal code.
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  },
-});
+3. **handleColorChange Function**:
+   - This function is called when a color is selected.
+   - It updates the `currentColor` state with the newly selected color.
+
+4. **Rendering**:
+   - The component renders a title, a preview of the current color, and a set of color options.
+   - The color preview is a `View` component with its background color set to the current selected color.
+   - The color options are rendered using the `map` function, which creates a `TouchableOpacity` component for each color in the `colors` array.
+
+5. **TouchableOpacity**:
+   - Each color option is wrapped in a `TouchableOpacity`, which makes it respond to touch events.
+   - When pressed, it calls `handleColorChange` with the corresponding color.
+
+6. **Styling**:
+   - The `StyleSheet.create` method is used to define styles for the component.
+   - The `colorPreview` and `colorOption` styles use `borderRadius` to create circular shapes.
+   - The `colorOptions` container uses `flexWrap: 'wrap'` to allow the color options to flow onto multiple lines if there are many colors.
+
+This component demonstrates several important React Native concepts: state management with hooks, dynamic rendering with `map`, handling user interactions with `TouchableOpacity`, and applying dynamic styles based on state and props.
 ```
 
 Key points to understand about the ColorPicker component:
